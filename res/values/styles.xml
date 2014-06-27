@@ -1,0 +1,46 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light"/>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+
+    <style name="IntroView">
+        <item name="android:background">@color/transparent</item>
+    </style>
+    
+    <style name="IntroView.Title">
+        <item name="android:textSize">@dimen/textSize_extra_large</item>
+        <item name="android:textColor">@color/light_grey</item>
+    </style>
+    
+    <style name="IntroView.Ad">
+        <item name="android:textSize">@dimen/textSize_large</item>
+        <item name="android:textColor">@color/light_grey</item>
+    </style>
+    
+    <style name="IntroView.SubTitle">
+        <item name="android:textSize">@dimen/textSize_small</item>
+        <item name="android:textColor">@color/grey</item>
+    </style>
+    
+    <style name="IntroView.SubTitleHighlight">
+        <item name="android:textSize">@dimen/textSize_small</item>
+        <item name="android:textColor">@color/light_red</item>
+    </style>
+    
+    <style name="IntroView.Button">
+        <item name="android:textSize">@dimen/textSize_medium</item>
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:paddingTop">@dimen/overlay_vertical_margin</item>
+        <item name="android:paddingBottom">@dimen/overlay_vertical_margin</item>
+    </style>
+    
+    <style name="IntroTheme" parent="AppTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+</resources>

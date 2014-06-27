@@ -1,0 +1,25 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res/com.olyware.game3072"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_game"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_horizontal_margin"
+    tools:context=".MainActivity" >
+
+    <com.olyware.game3072.views.JoystickView
+        android:id="@+id/joystick"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        custom:labelTextSize="@dimen/textSize_medium"
+        custom:textTextSize="@dimen/textSize_medium"
+        custom:textTextSizeBig="@dimen/textSize_large"
+        custom:name1="@string/leaderboard_default_name1"
+        custom:name2="@string/leaderboard_default_name2"
+        custom:place1="@string/leaderboard_default_place1"
+        custom:place2="@string/leaderboard_default_place2"
+        custom:score1="@string/leaderboard_default_score1"
+        custom:score2="@string/leaderboard_default_score2" />
+
+</RelativeLayout>

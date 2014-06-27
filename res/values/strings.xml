@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	
+    <string name="app_name">3072</string>
+    <string name="app_id">229470357262793</string>
+    
+    <!-- DeelDat API -->
+    <string name="deeldat_api_key">1716a4ac3509884eb5cf0245d392be52</string>
+    <string name="password_key">PzVxgFYkgnQhc6J3Rt87uGTbtUBKnvQHNp9TFHX2qxScG2XA5fWMaPNaGj83cXLfpN3X73jhZkz6UELQN88kYy8hMhFeGkvKPvE62WAYshEDEUfyzYW73Q5nGuFgeJSN</string>
+    <string name="password">zM7qSpsqBWpk5Cfd7gGS5EaPESR2rhM2z6KG6y8bm6QpZddCysqKszz7jXrsDektV6acf3L6uWyk6ER852JMr4pRNBF9ucB69cM296xAjcxWfXVU9q5mgzLY8azMkLUH</string>
+    
+    <!-- Joystick strings -->
+    <string name="score_current">Score</string>
+    <string name="score_best">Best</string>
+    <string name="score_global">Global</string>
+    <string name="score_friends">Friends</string>
+    
+    <!-- General Overlay -->
+    <string name="fragment_overlay_text_ad">Try Hiq Lockscreen Today\nand Unlock Your IQ!</string>
+    
+    <!-- EditText Overlay -->
+    <string name="fragment_edittext_title">Change Your Name</string>
+    <string name="fragment_edittext_subtitle">The Name Displayed on the Leaderboard</string>
+    <string name="fragment_edittext_hint">eg. anonymous</string>
+    <string name="fragment_edittext_button1">Change</string>
+    <string name="fragment_edittext_button2">Return</string>
+    
+    <!-- Exit Overlay -->
+    <string name="fragment_overlay_text_title_exit">Exit Game?</string>
+    <string name="fragment_overlay_text_subtitle_exit">Your progress is\u0020</string>
+    <string name="fragment_overlay_text_subtitle_highlight_exit">saved</string>
+    <string name="fragment_overlay_button1_exit">Exit</string>
+    <string name="fragment_overlay_button2_exit">Return</string>
+    <string name="fragment_overlay_button3_exit"></string>
+    
+    <!-- Challenge Overlay -->
+    <string name="fragment_overlay_text_title_challenge">Challenge Accepted</string>
+    <string name="fragment_overlay_text_subtitle_challenge">Score to Beat\u0020</string>
+    <string name="fragment_overlay_button3_challenge">Start</string>
+    
+    <!-- Game Over Overlay -->
+    <string name="fragment_overlay_text_title_gameover">Game Over</string>
+    <string name="fragment_overlay_text_subtitle_gameover">Your Score\u0020</string>
+    <string name="fragment_overlay_text_subtitle_highlight_gameover">0000</string>
+    <string name="fragment_overlay_button1_gameover">Reset</string>
+    <string name="fragment_overlay_button2_gameover">Return</string>
+    <string name="fragment_overlay_button3_gameover">Share\n+1 Undo</string>
+    
+    <!-- Game Over Challenge Overlay -->
+    <string name="fragment_overlay_text_title_gameover_challenge_won">You Won!</string>
+    <string name="fragment_overlay_text_title_gameover_challenge_lost">You Lost</string>
+    <string name="fragment_overlay_text_title_gameover_challenge_tie">You Tied!</string>
+    <string name="fragment_overlay_text_subtitle_gameover_challenge_won">Your Score \nFriends Score\u0020</string>
+    <string name="fragment_overlay_text_subtitle_gameover_challenge_lost">Friends Score \nYour Score\u0020</string>
+    <string name="fragment_overlay_text_subtitle_highlight_gameover_challenge">0000\n0</string>
+    <string name="fragment_overlay_button3_gameover_challenge_won">Challenge Back\n+1 Undo</string>
+    <string name="fragment_overlay_button3_gameover_challenge_lost">Share\n+1 Undo</string>
+
+    <!-- Undo Overlay -->
+    <string name="fragment_overlay_text_title_undo">Undos</string>
+    <string name="fragment_overlay_text_subtitle_undo">Share to get\u0020</string>
+    <string name="fragment_overlay_text_subtitle_highlight_undo">+1 Undo per Game</string>
+    <string name="fragment_overlay_button1_undo">Share</string>
+    <string name="fragment_overlay_button2_undo">Not Now</string>
+    <string name="fragment_overlay_button3_undo">Rate</string>
+    
+    <!-- Restart Overlay -->
+    <string name="fragment_overlay_text_title_restart">Restart?</string>
+    <string name="fragment_overlay_text_subtitle_restart">Current Score\u0020</string>
+    <string name="fragment_overlay_text_subtitle_highlight_restart">0000</string>
+    <string name="fragment_overlay_button1_restart">Restart</string>
+    <string name="fragment_overlay_button2_restart">Return</string>
+    <string name="fragment_overlay_button3_restart"></string>
+    
+    <!-- Play Store links -->
+    <string name="play_store_link_hiq">market://details?id=com.olyware.mathlock&amp;referrer=utm_source%3D3072%26utm_medium%3Dreferral</string>
+    <string name="play_store_link_3072">market://details?id=com.olyware.game3072</string>
+    <string name="play_store_link_3072_web">https://play.google.com/store/apps/details?id=com.olyware.game3072&amp;referrer=utm_source%3D3072%26utm_medium%3Dreferral</string>
+    
+    <!-- Sharing -->
+    <string name="share_description">3072 is a game of skill and planning to get the highest score possible</string>
+    
+    <!-- Leaderboard -->
+    <string name="default_name">anonymous</string>
+    <string name="leaderboard_default_place1">1st</string>
+    <string name="leaderboard_default_name1">Kyle Olson</string>
+    <string name="leaderboard_default_score1">26649</string>
+    <string name="leaderboard_default_place2">9999999</string>
+    <string name="leaderboard_default_name2">anonymous</string>
+    <string name="leaderboard_default_score2">0</string>
+    
+</resources>

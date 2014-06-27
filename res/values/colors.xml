@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <color name="grey">#9a9a9a</color>
+    <color name="light_grey">#cccccc</color>
+    <color name="blue">#0099cc</color>
+    <color name="light_red">#ff3d6d</color>
+    <color name="background">#afd89d</color>
+    <color name="background0">#d5e5ce</color>
+    <color name="background3">#d2e6ff</color>
+    <color name="background6">#b4d7ff</color>
+    <color name="background12">#96c8ff</color>
+    <color name="background24">#78b9ff</color>
+    <color name="background48">#5aaaff</color>
+    <color name="background96">#3c9bff</color>
+    <color name="background192">#1e8cff</color>
+    <color name="background384">#007dff</color>
+    <color name="background768">#0073eb</color>
+    <color name="background1536">#0069d7</color>
+    <color name="background3072">#c30009</color>
+    <color name="background6144">#0055af</color>
+    <color name="background12288">#004b9b</color>
+    <color name="background24576">#004187</color>
+    <color name="background49152">#003773</color>
+    <color name="background98304">#002d5f</color>
+    <color name="background196608">#00234b</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#ffffff</color>
+    
+    <color name="button_background_default">#005cb5</color>
+    <color name="button_background_pressed">#003c76</color>
+    <color name="button_background_disabled">#5880a6</color>
+    <color name="button_text">#ffffff</color>
+    <color name="button_intro_default">#00000000</color>
+    <color name="button_intro_pressed">#37ffffff</color>
+    <color name="button_intro_text">#ffffff</color>
+</resources>
