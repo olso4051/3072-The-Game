@@ -30,6 +30,8 @@ public class ShareHelper {
 	private static ProgressDialog staticProgressDialog;
 	private static String staticLink;
 	private static Context staticContext;
+	private static Activity staticActivity;
+	private static UiLifecycleHelper staticUiHelper;
 
 	public static void shareFacebook(final Context context, final UiLifecycleHelper uiHelper, final ProgressDialog pDialog, Bitmap image,
 			int score, String deepLink) {
@@ -67,7 +69,8 @@ public class ShareHelper {
 
 	private static void onSessionStateChange(Session session, SessionState state, Exception exception) {
 		if (state.isOpened()) {
-			showFeedDialog(staticContext, staticLink);
+			shareFacebook();
+			// showFeedDialog(staticContext, staticLink);
 		}
 	}
 
@@ -76,24 +79,36 @@ public class ShareHelper {
 	}
 
 	public static void shareFacebook(final Context context, final UiLifecycleHelper uiHelper, ProgressDialog pDialog, String link) {
-		Activity act = (Activity) context;
+		/*Activity act = (Activity) context;
 		if (FacebookDialog.canPresentShareDialog(context.getApplicationContext(), FacebookDialog.ShareDialogFeature.SHARE_DIALOG)) {
-			FacebookDialog.ShareDialogBuilder shareDialogBuilder1 = new FacebookDialog.ShareDialogBuilder(act).setLink(link/*share*/);
+			FacebookDialog.ShareDialogBuilder shareDialogBuilder1 = new FacebookDialog.ShareDialogBuilder(act).setLink(link);
 			FacebookDialog shareDialog1 = shareDialogBuilder1.build();
 			uiHelper.trackPendingDialogCall(shareDialog1.present());
+		} else {*/
+		staticLink = link;
+		staticContext = context;
+		staticProgressDialog = pDialog;
+		staticActivity = (Activity) context;
+		Session session = Session.getActiveSession();
+		if (!session.isOpened() && !session.isClosed()) {
+			session.openForRead(new Session.OpenRequest(staticActivity).setPermissions(PERMISSIONS).setCallback(loginCallback));
+		} else if (session.isOpened()) {
+			shareFacebook();
+			// showFeedDialog(context, link);
 		} else {
-			staticLink = link;
-			staticContext = context;
-			staticProgressDialog = pDialog;
-			Session session = Session.getActiveSession();
-			if (!session.isOpened() && !session.isClosed()) {
-				session.openForRead(new Session.OpenRequest(act).setPermissions(PERMISSIONS).setCallback(loginCallback));
-			} else if (session.isOpened()) {
-				showFeedDialog(context, link);
-			} else {
-				Session.openActiveSession(act, true, PERMISSIONS, loginCallback);
-			}
+			Session.openActiveSession(staticActivity, true, PERMISSIONS, loginCallback);
+		}
+		// }
+	}
 
+	private static void shareFacebook() {
+		if (FacebookDialog.canPresentShareDialog(staticContext.getApplicationContext(), FacebookDialog.ShareDialogFeature.SHARE_DIALOG)) {
+			FacebookDialog.ShareDialogBuilder shareDialogBuilder1 = new FacebookDialog.ShareDialogBuilder(staticActivity)
+					.setLink(staticLink);
+			FacebookDialog shareDialog1 = shareDialogBuilder1.build();
+			staticUiHelper.trackPendingDialogCall(shareDialog1.present());
+		} else {
+			showFeedDialog(staticContext, staticLink);
 		}
 	}
 

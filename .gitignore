@@ -1,0 +1,10 @@
+#################
+## Eclipse
+#################
+
+bin/*
+gen/*
+*.Class
+*.dex
+tmp/*
+.DS_Store

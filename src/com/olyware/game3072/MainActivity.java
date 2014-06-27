@@ -330,7 +330,7 @@ public class MainActivity extends FragmentActivity {
 				editor.commit();
 			}
 		};
-		if (!sharedPrefs.getBoolean("score_uploaded", false))
+		if (!sharedPrefs.getBoolean("score_uploaded", false) && best > 0)
 			putHighScore.execute(String.valueOf(best), "new",
 					sharedPrefs.getString("user_name", MainActivity.this.getString(R.string.default_name)));
 		else
