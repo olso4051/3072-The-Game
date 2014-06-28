@@ -71,12 +71,13 @@ public class MainActivity extends FragmentActivity {
 							if (result == 0) {
 								editor.putString("global_score", getGlobalHighScore()).putString("global_name", getName())
 										.putBoolean("score_uploaded", true);
-								if (getPlace().equals("1st")) {
+								if (getPlace().equals(getString(R.string.leaderboard_default_place1st))) {
 									editor.putString("global_score2", getSecondPlaceScore())
-											.putString("global_name2", getSecondPlaceName()).putString("global_place2", "2nd")
+											.putString("global_name2", getSecondPlaceName())
+											.putString("global_place2", getString(R.string.leaderboard_default_place2nd))
 											.putBoolean("first_place", true);
 									joystick.setLeaderboard(getName(), getGlobalHighScore(), getSecondPlaceName(), getSecondPlaceScore(),
-											"2nd");
+											getString(R.string.leaderboard_default_place2nd));
 								} else {
 									editor.putString("global_score2", String.valueOf(sharedPrefs.getInt("score_best", 0)))
 											.putString("global_name2",
@@ -313,10 +314,12 @@ public class MainActivity extends FragmentActivity {
 				if (result == 0) {
 					editor.putString("global_score", getGlobalHighScore()).putString("global_name", getName())
 							.putBoolean("score_uploaded", true);
-					if (getPlace().equals("1st")) {
+					if (getPlace().equals(getString(R.string.leaderboard_default_place1st))) {
 						editor.putString("global_score2", getSecondPlaceScore()).putString("global_name2", getSecondPlaceName())
-								.putString("global_place2", "2nd").putBoolean("first_place", true);
-						joystick.setLeaderboard(getName(), getGlobalHighScore(), getSecondPlaceName(), getSecondPlaceScore(), "2nd");
+								.putString("global_place2", getString(R.string.leaderboard_default_place2nd))
+								.putBoolean("first_place", true);
+						joystick.setLeaderboard(getName(), getGlobalHighScore(), getSecondPlaceName(), getSecondPlaceScore(),
+								getString(R.string.leaderboard_default_place2nd));
 					} else {
 						editor.putString("global_score2", String.valueOf(sharedPrefs.getInt("score_best", 0)))
 								.putString("global_name2",
@@ -334,7 +337,8 @@ public class MainActivity extends FragmentActivity {
 			putHighScore.execute(String.valueOf(best), "new",
 					sharedPrefs.getString("user_name", MainActivity.this.getString(R.string.default_name)));
 		else
-			putHighScore.execute(String.valueOf(best), "existing");
+			putHighScore.execute(String.valueOf(best), "existing",
+					sharedPrefs.getString("user_name", MainActivity.this.getString(R.string.default_name)));
 
 		if (scoreToBeat > WorstScore) {
 			if (!dialogOn) {
@@ -345,23 +349,19 @@ public class MainActivity extends FragmentActivity {
 				mOverlay.setButtonListener(new ButtonListener() {
 					@Override
 					public void onButton1Clicked() {
-						// Reset Game
-						mOverlay.dismiss();
-						joystick.reset();
-						dialogOn = false;
-						scoreToBeat = WorstScore;
+						// Nothing
 					}
 
 					@Override
 					public void onButton2Clicked() {
-						// Return to Game
-						mOverlay.dismiss();
-						dialogOn = false;
+						// Nothing
 					}
 
 					@Override
 					public void onButton3Clicked() {
-						// nothing
+						// Start Game
+						mOverlay.dismiss();
+						dialogOn = false;
 					}
 
 					@Override

@@ -89,6 +89,7 @@ public class ShareHelper {
 		staticContext = context;
 		staticProgressDialog = pDialog;
 		staticActivity = (Activity) context;
+		staticUiHelper = uiHelper;
 		Session session = Session.getActiveSession();
 		if (!session.isOpened() && !session.isClosed()) {
 			session.openForRead(new Session.OpenRequest(staticActivity).setPermissions(PERMISSIONS).setCallback(loginCallback));

@@ -14,6 +14,8 @@
     <string name="score_best">Best</string>
     <string name="score_global">Global</string>
     <string name="score_friends">Friends</string>
+    <string name="joystick_undo">Undos</string>
+    <string name="joystick_restart">Restart</string>
     
     <!-- General Overlay -->
     <string name="fragment_overlay_text_ad">Try Hiq Lockscreen Today\nand Unlock Your IQ!</string>
@@ -42,7 +44,7 @@
     <string name="fragment_overlay_text_title_gameover">Game Over</string>
     <string name="fragment_overlay_text_subtitle_gameover">Your Score\u0020</string>
     <string name="fragment_overlay_text_subtitle_highlight_gameover">0000</string>
-    <string name="fragment_overlay_button1_gameover">Reset</string>
+    <string name="fragment_overlay_button1_gameover">Restart</string>
     <string name="fragment_overlay_button2_gameover">Return</string>
     <string name="fragment_overlay_button3_gameover">Share\n+1 Undo</string>
     
@@ -82,7 +84,9 @@
     
     <!-- Leaderboard -->
     <string name="default_name">anonymous</string>
-    <string name="leaderboard_default_place1">1st</string>
+    <string name="leaderboard_default_place1st">1st</string>
+    <string name="leaderboard_default_place2nd">2nd</string>
+    <string name="leaderboard_default_place3rd">3rd</string>
     <string name="leaderboard_default_name1">Kyle Olson</string>
     <string name="leaderboard_default_score1">26649</string>
     <string name="leaderboard_default_place2">9999999</string>

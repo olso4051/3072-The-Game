@@ -542,7 +542,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int name1=0x7f010083;
+        public static final int name1=0x7f010085;
         /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -550,7 +550,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int name2=0x7f010086;
+        public static final int name2=0x7f010088;
         /**  The type of navigation to use. 
          <p>Must be one of the following constant values.</p>
 <table>
@@ -609,7 +609,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int place1=0x7f010085;
+        public static final int place1=0x7f010087;
         /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -617,7 +617,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int place2=0x7f010088;
+        public static final int place2=0x7f01008a;
         /**  Default PopupMenu style. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -680,6 +680,14 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int radius_in_meters=0x7f010008;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int restart=0x7f010083;
         /** <p>Must be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -695,7 +703,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int score1=0x7f010084;
+        public static final int score1=0x7f010086;
         /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -703,7 +711,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int score2=0x7f010087;
+        public static final int score2=0x7f010089;
         /**  SearchView dropdown background 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -967,6 +975,14 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int title_text=0x7f010003;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int undo=0x7f010084;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -1661,77 +1677,81 @@ containing a value of this type.
         public static final int deeldat_api_key=0x7f090029;
         /**  Leaderboard 
          */
-        public static final int default_name=0x7f09005d;
-        public static final int fragment_edittext_button1=0x7f090034;
-        public static final int fragment_edittext_button2=0x7f090035;
-        public static final int fragment_edittext_hint=0x7f090033;
-        public static final int fragment_edittext_subtitle=0x7f090032;
+        public static final int default_name=0x7f09005f;
+        public static final int fragment_edittext_button1=0x7f090036;
+        public static final int fragment_edittext_button2=0x7f090037;
+        public static final int fragment_edittext_hint=0x7f090035;
+        public static final int fragment_edittext_subtitle=0x7f090034;
         /**  EditText Overlay 
          */
-        public static final int fragment_edittext_title=0x7f090031;
-        public static final int fragment_overlay_button1_exit=0x7f090039;
-        public static final int fragment_overlay_button1_gameover=0x7f090042;
-        public static final int fragment_overlay_button1_restart=0x7f090056;
-        public static final int fragment_overlay_button1_undo=0x7f090050;
-        public static final int fragment_overlay_button2_exit=0x7f09003a;
-        public static final int fragment_overlay_button2_gameover=0x7f090043;
-        public static final int fragment_overlay_button2_restart=0x7f090057;
-        public static final int fragment_overlay_button2_undo=0x7f090051;
-        public static final int fragment_overlay_button3_challenge=0x7f09003e;
-        public static final int fragment_overlay_button3_exit=0x7f09003b;
-        public static final int fragment_overlay_button3_gameover=0x7f090044;
-        public static final int fragment_overlay_button3_gameover_challenge_lost=0x7f09004c;
-        public static final int fragment_overlay_button3_gameover_challenge_won=0x7f09004b;
-        public static final int fragment_overlay_button3_restart=0x7f090058;
-        public static final int fragment_overlay_button3_undo=0x7f090052;
+        public static final int fragment_edittext_title=0x7f090033;
+        public static final int fragment_overlay_button1_exit=0x7f09003b;
+        public static final int fragment_overlay_button1_gameover=0x7f090044;
+        public static final int fragment_overlay_button1_restart=0x7f090058;
+        public static final int fragment_overlay_button1_undo=0x7f090052;
+        public static final int fragment_overlay_button2_exit=0x7f09003c;
+        public static final int fragment_overlay_button2_gameover=0x7f090045;
+        public static final int fragment_overlay_button2_restart=0x7f090059;
+        public static final int fragment_overlay_button2_undo=0x7f090053;
+        public static final int fragment_overlay_button3_challenge=0x7f090040;
+        public static final int fragment_overlay_button3_exit=0x7f09003d;
+        public static final int fragment_overlay_button3_gameover=0x7f090046;
+        public static final int fragment_overlay_button3_gameover_challenge_lost=0x7f09004e;
+        public static final int fragment_overlay_button3_gameover_challenge_won=0x7f09004d;
+        public static final int fragment_overlay_button3_restart=0x7f09005a;
+        public static final int fragment_overlay_button3_undo=0x7f090054;
         /**  General Overlay 
          */
-        public static final int fragment_overlay_text_ad=0x7f090030;
-        public static final int fragment_overlay_text_subtitle_challenge=0x7f09003d;
-        public static final int fragment_overlay_text_subtitle_exit=0x7f090037;
-        public static final int fragment_overlay_text_subtitle_gameover=0x7f090040;
-        public static final int fragment_overlay_text_subtitle_gameover_challenge_lost=0x7f090049;
-        public static final int fragment_overlay_text_subtitle_gameover_challenge_won=0x7f090048;
-        public static final int fragment_overlay_text_subtitle_highlight_exit=0x7f090038;
-        public static final int fragment_overlay_text_subtitle_highlight_gameover=0x7f090041;
-        public static final int fragment_overlay_text_subtitle_highlight_gameover_challenge=0x7f09004a;
-        public static final int fragment_overlay_text_subtitle_highlight_restart=0x7f090055;
-        public static final int fragment_overlay_text_subtitle_highlight_undo=0x7f09004f;
-        public static final int fragment_overlay_text_subtitle_restart=0x7f090054;
-        public static final int fragment_overlay_text_subtitle_undo=0x7f09004e;
+        public static final int fragment_overlay_text_ad=0x7f090032;
+        public static final int fragment_overlay_text_subtitle_challenge=0x7f09003f;
+        public static final int fragment_overlay_text_subtitle_exit=0x7f090039;
+        public static final int fragment_overlay_text_subtitle_gameover=0x7f090042;
+        public static final int fragment_overlay_text_subtitle_gameover_challenge_lost=0x7f09004b;
+        public static final int fragment_overlay_text_subtitle_gameover_challenge_won=0x7f09004a;
+        public static final int fragment_overlay_text_subtitle_highlight_exit=0x7f09003a;
+        public static final int fragment_overlay_text_subtitle_highlight_gameover=0x7f090043;
+        public static final int fragment_overlay_text_subtitle_highlight_gameover_challenge=0x7f09004c;
+        public static final int fragment_overlay_text_subtitle_highlight_restart=0x7f090057;
+        public static final int fragment_overlay_text_subtitle_highlight_undo=0x7f090051;
+        public static final int fragment_overlay_text_subtitle_restart=0x7f090056;
+        public static final int fragment_overlay_text_subtitle_undo=0x7f090050;
         /**  Challenge Overlay 
          */
-        public static final int fragment_overlay_text_title_challenge=0x7f09003c;
+        public static final int fragment_overlay_text_title_challenge=0x7f09003e;
         /**  Exit Overlay 
          */
-        public static final int fragment_overlay_text_title_exit=0x7f090036;
+        public static final int fragment_overlay_text_title_exit=0x7f090038;
         /**  Game Over Overlay 
          */
-        public static final int fragment_overlay_text_title_gameover=0x7f09003f;
-        public static final int fragment_overlay_text_title_gameover_challenge_lost=0x7f090046;
-        public static final int fragment_overlay_text_title_gameover_challenge_tie=0x7f090047;
+        public static final int fragment_overlay_text_title_gameover=0x7f090041;
+        public static final int fragment_overlay_text_title_gameover_challenge_lost=0x7f090048;
+        public static final int fragment_overlay_text_title_gameover_challenge_tie=0x7f090049;
         /**  Game Over Challenge Overlay 
          */
-        public static final int fragment_overlay_text_title_gameover_challenge_won=0x7f090045;
+        public static final int fragment_overlay_text_title_gameover_challenge_won=0x7f090047;
         /**  Restart Overlay 
          */
-        public static final int fragment_overlay_text_title_restart=0x7f090053;
+        public static final int fragment_overlay_text_title_restart=0x7f090055;
         /**  Undo Overlay 
          */
-        public static final int fragment_overlay_text_title_undo=0x7f09004d;
-        public static final int leaderboard_default_name1=0x7f09005f;
-        public static final int leaderboard_default_name2=0x7f090062;
-        public static final int leaderboard_default_place1=0x7f09005e;
-        public static final int leaderboard_default_place2=0x7f090061;
-        public static final int leaderboard_default_score1=0x7f090060;
-        public static final int leaderboard_default_score2=0x7f090063;
+        public static final int fragment_overlay_text_title_undo=0x7f09004f;
+        public static final int joystick_restart=0x7f090031;
+        public static final int joystick_undo=0x7f090030;
+        public static final int leaderboard_default_name1=0x7f090063;
+        public static final int leaderboard_default_name2=0x7f090066;
+        public static final int leaderboard_default_place1st=0x7f090060;
+        public static final int leaderboard_default_place2=0x7f090065;
+        public static final int leaderboard_default_place2nd=0x7f090061;
+        public static final int leaderboard_default_place3rd=0x7f090062;
+        public static final int leaderboard_default_score1=0x7f090064;
+        public static final int leaderboard_default_score2=0x7f090067;
         public static final int password=0x7f09002b;
         public static final int password_key=0x7f09002a;
-        public static final int play_store_link_3072=0x7f09005a;
-        public static final int play_store_link_3072_web=0x7f09005b;
+        public static final int play_store_link_3072=0x7f09005c;
+        public static final int play_store_link_3072_web=0x7f09005d;
         /**  Play Store links 
          */
-        public static final int play_store_link_hiq=0x7f090059;
+        public static final int play_store_link_hiq=0x7f09005b;
         public static final int score_best=0x7f09002d;
         /**  Joystick strings 
          */
@@ -1740,7 +1760,7 @@ containing a value of this type.
         public static final int score_global=0x7f09002e;
         /**  Sharing 
          */
-        public static final int share_description=0x7f09005c;
+        public static final int share_description=0x7f09005e;
     }
     public static final class style {
         /** 
@@ -2697,25 +2717,29 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <tr><td><code>{@link #JoystickView_name2 com.olyware.game3072:name2}</code></td><td></td></tr>
            <tr><td><code>{@link #JoystickView_place1 com.olyware.game3072:place1}</code></td><td></td></tr>
            <tr><td><code>{@link #JoystickView_place2 com.olyware.game3072:place2}</code></td><td></td></tr>
+           <tr><td><code>{@link #JoystickView_restart com.olyware.game3072:restart}</code></td><td></td></tr>
            <tr><td><code>{@link #JoystickView_score1 com.olyware.game3072:score1}</code></td><td></td></tr>
            <tr><td><code>{@link #JoystickView_score2 com.olyware.game3072:score2}</code></td><td></td></tr>
            <tr><td><code>{@link #JoystickView_textTextSize com.olyware.game3072:textTextSize}</code></td><td></td></tr>
            <tr><td><code>{@link #JoystickView_textTextSizeBig com.olyware.game3072:textTextSizeBig}</code></td><td></td></tr>
+           <tr><td><code>{@link #JoystickView_undo com.olyware.game3072:undo}</code></td><td></td></tr>
            </table>
            @see #JoystickView_labelTextSize
            @see #JoystickView_name1
            @see #JoystickView_name2
            @see #JoystickView_place1
            @see #JoystickView_place2
+           @see #JoystickView_restart
            @see #JoystickView_score1
            @see #JoystickView_score2
            @see #JoystickView_textTextSize
            @see #JoystickView_textTextSizeBig
+           @see #JoystickView_undo
          */
         public static final int[] JoystickView = {
             0x7f010080, 0x7f010081, 0x7f010082, 0x7f010083,
             0x7f010084, 0x7f010085, 0x7f010086, 0x7f010087,
-            0x7f010088
+            0x7f010088, 0x7f010089, 0x7f01008a
         };
         /**
           <p>This symbol is the offset where the {@link com.olyware.game3072.R.attr#labelTextSize}
@@ -2746,7 +2770,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.olyware.game3072:name1
         */
-        public static final int JoystickView_name1 = 3;
+        public static final int JoystickView_name1 = 5;
         /**
           <p>This symbol is the offset where the {@link com.olyware.game3072.R.attr#name2}
           attribute's value can be found in the {@link #JoystickView} array.
@@ -2760,7 +2784,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.olyware.game3072:name2
         */
-        public static final int JoystickView_name2 = 6;
+        public static final int JoystickView_name2 = 8;
         /**
           <p>This symbol is the offset where the {@link com.olyware.game3072.R.attr#place1}
           attribute's value can be found in the {@link #JoystickView} array.
@@ -2774,7 +2798,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.olyware.game3072:place1
         */
-        public static final int JoystickView_place1 = 5;
+        public static final int JoystickView_place1 = 7;
         /**
           <p>This symbol is the offset where the {@link com.olyware.game3072.R.attr#place2}
           attribute's value can be found in the {@link #JoystickView} array.
@@ -2788,7 +2812,21 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.olyware.game3072:place2
         */
-        public static final int JoystickView_place2 = 8;
+        public static final int JoystickView_place2 = 10;
+        /**
+          <p>This symbol is the offset where the {@link com.olyware.game3072.R.attr#restart}
+          attribute's value can be found in the {@link #JoystickView} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.olyware.game3072:restart
+        */
+        public static final int JoystickView_restart = 3;
         /**
           <p>This symbol is the offset where the {@link com.olyware.game3072.R.attr#score1}
           attribute's value can be found in the {@link #JoystickView} array.
@@ -2802,7 +2840,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.olyware.game3072:score1
         */
-        public static final int JoystickView_score1 = 4;
+        public static final int JoystickView_score1 = 6;
         /**
           <p>This symbol is the offset where the {@link com.olyware.game3072.R.attr#score2}
           attribute's value can be found in the {@link #JoystickView} array.
@@ -2816,7 +2854,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.olyware.game3072:score2
         */
-        public static final int JoystickView_score2 = 7;
+        public static final int JoystickView_score2 = 9;
         /**
           <p>This symbol is the offset where the {@link com.olyware.game3072.R.attr#textTextSize}
           attribute's value can be found in the {@link #JoystickView} array.
@@ -2849,6 +2887,20 @@ containing a value of this type.
           @attr name com.olyware.game3072:textTextSizeBig
         */
         public static final int JoystickView_textTextSizeBig = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.olyware.game3072.R.attr#undo}
+          attribute's value can be found in the {@link #JoystickView} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.olyware.game3072:undo
+        */
+        public static final int JoystickView_undo = 4;
         /** Attributes that can be used with a LinearLayoutICS.
            <p>Includes the following attributes:</p>
            <table>

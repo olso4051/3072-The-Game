@@ -20,8 +20,10 @@ public class PostHighScore extends AsyncTask<String, Integer, Integer> {
 	private final String BASE_URL = "http://deeldat.com/score";
 	private String globalHighScore, secondPlaceScore, name, secondPlaceName, place, success, error;
 	private String passwordKey, password;
+	private Context ctx;
 
 	public PostHighScore(Context ctx) {
+		this.ctx = ctx;
 		passwordKey = ctx.getString(R.string.password_key);
 		password = ctx.getString(R.string.password);
 	}
@@ -64,11 +66,11 @@ public class PostHighScore extends AsyncTask<String, Integer, Integer> {
 	public String getPlace() {
 		if (place != null)
 			if (place.equals("1"))
-				return "1st";
+				return ctx.getString(R.string.leaderboard_default_place1st);
 			else if (place.equals("2"))
-				return "2nd";
+				return ctx.getString(R.string.leaderboard_default_place2nd);
 			else if (place.equals("3"))
-				return "3rd";
+				return ctx.getString(R.string.leaderboard_default_place3rd);
 			else
 				return place;
 		else

@@ -54,7 +54,7 @@ public class JoystickView extends View {
 			textTextSize, textTextSizeBig;
 	private double startX, startY;
 	private boolean slid, leaderboard = true;
-	private String name1, score1, place1 = "1st", name2, score2, place2;
+	private String Restart, Undo, name1, score1, place1 = "1st", name2, score2, place2;
 	private Drawable ad;
 	private Path triangleBigPath, adPathOutside, adPathInside;
 	private TextPaint labelTextPaint, textTextPaint, leftTextPaint, rightTextPaint, leftTextPaintBig, rightTextPaintBig;
@@ -490,9 +490,15 @@ public class JoystickView extends View {
 			labelTextSize = a.getDimension(R.styleable.JoystickView_labelTextSize, 0);
 			textTextSize = a.getDimension(R.styleable.JoystickView_textTextSize, 0);
 			textTextSizeBig = a.getDimension(R.styleable.JoystickView_textTextSizeBig, 0);
+			Restart = a.getString(R.styleable.JoystickView_restart);
+			if (Restart == null)
+				Restart = context.getString(R.string.joystick_restart);
+			Undo = a.getString(R.styleable.JoystickView_undo);
+			if (Undo == null)
+				Undo = context.getString(R.string.joystick_restart);
 			place1 = a.getString(R.styleable.JoystickView_place1);
 			if (place1 == null)
-				place1 = context.getString(R.string.leaderboard_default_place1);
+				place1 = context.getString(R.string.leaderboard_default_place1st);
 			name1 = a.getString(R.styleable.JoystickView_name1);
 			if (name1 == null)
 				name1 = context.getString(R.string.leaderboard_default_name1);
@@ -804,8 +810,8 @@ public class JoystickView extends View {
 	@Override
 	protected void onDraw(Canvas canvas) {
 		// Drawing Restart, Undos(#)
-		canvas.drawText("Restart", PaddingLeft, triangles.get(0).getTextY(), leftTextPaintBig);
-		canvas.drawText("Undos (" + ((undos == 0 || states.size() <= 1) ? "?" : Math.min(undos, states.size() - 1)) + ")", Width
+		canvas.drawText(Restart, PaddingLeft, triangles.get(0).getTextY(), leftTextPaintBig);
+		canvas.drawText(Undo + "(" + ((undos == 0 || states.size() <= 1) ? "?" : Math.min(undos, states.size() - 1)) + ")", Width
 				- PaddingRight, triangles.get(0).getTextY(), rightTextPaintBig);
 
 		// Drawing Game Board

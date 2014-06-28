@@ -15,9 +15,11 @@
         custom:labelTextSize="@dimen/textSize_medium"
         custom:textTextSize="@dimen/textSize_medium"
         custom:textTextSizeBig="@dimen/textSize_large"
+        custom:restart="@string/joystick_restart"
+        custom:undo="@string/joystick_undo"
         custom:name1="@string/leaderboard_default_name1"
         custom:name2="@string/leaderboard_default_name2"
-        custom:place1="@string/leaderboard_default_place1"
+        custom:place1="@string/leaderboard_default_place1st"
         custom:place2="@string/leaderboard_default_place2"
         custom:score1="@string/leaderboard_default_score1"
         custom:score2="@string/leaderboard_default_score2" />
