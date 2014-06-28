@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  
+  <string name="score_current">Puntuación</string>
+  <string name="score_best">Mejor</string>
+  <string name="score_global">Clasificación Mundial</string>
+  <string name="score_friends">Amigos</string>
+  <string name="joystick_undo">Deshacer</string>
+    <string name="joystick_restart">Reanudar</string>
+  
+  <string name="fragment_overlay_text_ad">Trate Hiq Lockscreen Hoy \ny desbloquear su IQ!</string>
+  
+  <string name="fragment_edittext_title">Cambiar su nombre</string>
+  <string name="fragment_edittext_subtitle">El nombre exhibido en la tabla de posiciones</string>
+  <string name="fragment_edittext_hint">p.ej. anónimo</string>
+  <string name="fragment_edittext_button1">Cambio</string>
+  <string name="fragment_edittext_button2">Retorno</string>
+  
+  <string name="fragment_overlay_text_title_exit">Salir del juego?</string>
+  <string name="fragment_overlay_text_subtitle_exit">Su progreso es\u0020</string>
+  <string name="fragment_overlay_text_subtitle_highlight_exit">ahorrado</string>
+  <string name="fragment_overlay_button1_exit">Salida</string>
+  <string name="fragment_overlay_button2_exit">Retorno</string>
+  <string name="fragment_overlay_button3_exit"></string>
+  
+  <string name="fragment_overlay_text_title_challenge">Desafío aceptado</string>
+  <string name="fragment_overlay_text_subtitle_challenge">Puntuación a Batir\u0020</string>
+  <string name="fragment_overlay_button3_challenge">Comienzo</string>
+  
+  <string name="fragment_overlay_text_title_gameover">Game Over</string>
+  <string name="fragment_overlay_text_subtitle_gameover">Su puntaje\u0020</string>
+  <string name="fragment_overlay_text_subtitle_highlight_gameover">00000000</string>
+  <string name="fragment_overlay_button1_gameover">Reanudar</string>
+  <string name="fragment_overlay_button2_gameover">Retorno</string>
+  <string name="fragment_overlay_button3_gameover">Compartir\n+1 Deshacer</string>
+  
+  <string name="fragment_overlay_text_title_gameover_challenge_won">¡Ganaste!</string>
+  <string name="fragment_overlay_text_title_gameover_challenge_lost">You Lost</string>
+  <string name="fragment_overlay_text_title_gameover_challenge_tie">¡Atado!</string>
+  <string name="fragment_overlay_text_subtitle_gameover_challenge_won">El Puntaje \nAmigos Puntaje\u0020</string>
+  <string name="fragment_overlay_text_subtitle_gameover_challenge_lost">Amigos Puntaje \nEl Puntaje\u0020</string>
+  <string name="fragment_overlay_text_subtitle_highlight_gameover_challenge">0000\n00000</string>
+  <string name="fragment_overlay_button3_gameover_challenge_won">Desafío Volver\n+1 Deshacer</string>
+  <string name="fragment_overlay_button3_gameover_challenge_lost">Compartir\n+1 Deshacer</string>
+  
+  <string name="fragment_overlay_text_title_undo">Deshacer</string>
+  <string name="fragment_overlay_text_subtitle_undo">Comparte conseguir\u0020</string>
+  <string name="fragment_overlay_text_subtitle_highlight_undo">+1 Deshacer por Partido</string>
+  <string name="fragment_overlay_button1_undo">Compartir</string>
+  <string name="fragment_overlay_button2_undo">No ahora</string>
+  <string name="fragment_overlay_button3_undo">Valorar</string>
+  
+  <string name="fragment_overlay_text_title_restart">Reanudar?</string>
+  <string name="fragment_overlay_text_subtitle_restart">Puntos Actuales\u0020</string>
+  <string name="fragment_overlay_text_subtitle_highlight_restart">0000</string>
+  <string name="fragment_overlay_button1_restart">Reanudar</string>
+  <string name="fragment_overlay_button2_restart">Retorno</string>
+  <string name="fragment_overlay_button3_restart"></string>
+  
+  <string name="play_store_link_hiq">market://details?id=com.olyware.mathlock&amp;referrer=utm_source%3D3072%26utm_medium%3Dreferral</string>
+  <string name="play_store_link_3072">market://details?id=com.olyware.game3072</string>
+  <string name="play_store_link_3072_web">https://play.google.com/store/apps/details?id=com.olyware.game3072&amp;referrer=utm_source%3D3072%26utm_medium%3Dreferral</string>
+  <string name="share_description">3072 es un juego de habilidad y planificación para conseguir la mayor puntuación posible</string>
+
+  <string name="default_name">anónimo</string>
+  <string name="leaderboard_default_place1st">1</string>
+  <string name="leaderboard_default_place2nd">2</string>
+  <string name="leaderboard_default_place3rd">3</string>
+  <string name="leaderboard_default_name1">Kyle Olson</string>
+  <string name="leaderboard_default_score1">46351</string>
+  <string name="leaderboard_default_place2">999999</string>
+  <string name="leaderboard_default_name2">anónimo</string>
+  <string name="leaderboard_default_score2">0</string>
+  
+</resources>
