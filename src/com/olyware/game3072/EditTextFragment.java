@@ -15,7 +15,6 @@ import android.support.v8.renderscript.Allocation;
 import android.support.v8.renderscript.Element;
 import android.support.v8.renderscript.RenderScript;
 import android.support.v8.renderscript.ScriptIntrinsicBlur;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -158,8 +157,6 @@ public class EditTextFragment extends DialogFragment implements View.OnClickList
 			} finally {
 				rs.destroy();
 			}
-			if (bmps[0] == null)
-				Log.d("test", "bitmap is null");
 			return bmps[0];
 		}
 	}

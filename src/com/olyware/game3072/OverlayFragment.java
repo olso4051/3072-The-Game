@@ -18,7 +18,6 @@ import android.support.v8.renderscript.ScriptIntrinsicBlur;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -192,8 +191,6 @@ public class OverlayFragment extends DialogFragment implements View.OnClickListe
 			} finally {
 				rs.destroy();
 			}
-			if (bmps[0] == null)
-				Log.d("test", "bitmap is null");
 			return bmps[0];
 		}
 	}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	
-    <string name="app_name">3072</string>
+    <string name="app_name">3072 The Game</string>
     <string name="app_id">229470357262793</string>
     
     <!-- DeelDat API -->
@@ -21,11 +21,11 @@
     <string name="fragment_overlay_text_ad">Try Hiq Lockscreen Today\nand Unlock Your IQ!</string>
     
     <!-- EditText Overlay -->
-    <string name="fragment_edittext_title">Change Your Name</string>
-    <string name="fragment_edittext_subtitle">The Name Displayed on the Leaderboard</string>
+    <string name="fragment_edittext_title">Set Name</string>
+    <string name="fragment_edittext_subtitle">Set the Name Displayed on the Leaderboard</string>
     <string name="fragment_edittext_hint">eg. anonymous</string>
-    <string name="fragment_edittext_button1">Change</string>
-    <string name="fragment_edittext_button2">Return</string>
+    <string name="fragment_edittext_button1">Set</string>
+    <string name="fragment_edittext_button2">Not Now</string>
     
     <!-- Exit Overlay -->
     <string name="fragment_overlay_text_title_exit">Exit Game?</string>

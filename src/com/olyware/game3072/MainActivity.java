@@ -10,7 +10,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 
@@ -33,7 +32,6 @@ public class MainActivity extends FragmentActivity {
 	private ProgressDialog progressDialog;
 	private Typefaces typefaces;
 	private Context ctx;
-	private boolean dialogOn = false;
 	private int scoreToBeat = WorstScore;
 
 	@SuppressLint("NewApi")
@@ -57,185 +55,77 @@ public class MainActivity extends FragmentActivity {
 		joystick.setOnJostickListener(new JoystickListener() {
 			@Override
 			public void onGameOver(final int score) {
-				SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-				if (score > sharedPrefs.getInt("score_best", 0)) {
-					joystick.setBest(score);
-					SharedPreferences.Editor edit = sharedPrefs.edit();
-					edit.putInt("score_best", score).putBoolean("score_uploaded", false);
-					edit.commit();
-					new PostHighScore(MainActivity.this) {
-						@Override
-						protected void onPostExecute(Integer result) {
-							SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-							SharedPreferences.Editor editor = sharedPrefs.edit();
-							if (result == 0) {
-								editor.putString("global_score", getGlobalHighScore()).putString("global_name", getName())
-										.putBoolean("score_uploaded", true);
-								if (getPlace().equals(getString(R.string.leaderboard_default_place1st))) {
-									editor.putString("global_score2", getSecondPlaceScore())
-											.putString("global_name2", getSecondPlaceName())
-											.putString("global_place2", getString(R.string.leaderboard_default_place2nd))
-											.putBoolean("first_place", true);
-									joystick.setLeaderboard(getName(), getGlobalHighScore(), getSecondPlaceName(), getSecondPlaceScore(),
-											getString(R.string.leaderboard_default_place2nd));
-								} else {
-									editor.putString("global_score2", String.valueOf(sharedPrefs.getInt("score_best", 0)))
-											.putString("global_name2",
-													sharedPrefs.getString("user_name", MainActivity.this.getString(R.string.default_name)))
-											.putString("global_place2", getPlace()).putBoolean("first_place", false);
-									joystick.setLeaderboard(getName(), getGlobalHighScore(),
-											sharedPrefs.getString("user_name", MainActivity.this.getString(R.string.default_name)),
-											String.valueOf(sharedPrefs.getInt("score_best", 0)), getPlace());
-								}
-							}
-							editor.commit();
-						}
-					}.execute(String.valueOf(score), "new",
-							sharedPrefs.getString("user_name", MainActivity.this.getString(R.string.default_name)));
-				}
-				if (!dialogOn) {
-					dialogOn = true;
-					String subtitleHighlight = "";
-					OverlayType type = OverlayType.GameOver;
-					if (scoreToBeat <= WorstScore) {
-						subtitleHighlight = String.valueOf(score);
-						type = OverlayType.GameOver;
-					} else if (scoreToBeat > score) {
-						type = OverlayType.GameOverChallengeLost;
-						subtitleHighlight = scoreToBeat + "\n" + score;
-					} else if (score > scoreToBeat) {
-						type = OverlayType.GameOverChallengeWon;
-						subtitleHighlight = score + "\n" + scoreToBeat;
-					} else {
-						type = OverlayType.GameOverChallengeTie;
-						subtitleHighlight = String.valueOf(score);
-					}
-					final Bitmap cropped = cropScreen(takeScreenShot());
-					final OverlayFragment mOverlay = OverlayFragment.newInstance(ctx, type, subtitleHighlight);
-					mOverlay.setCancelable(false);
-					mOverlay.setBackground(ctx, takeScreenShot());
-					mOverlay.show(getSupportFragmentManager(), "fragment_overlay");
-					mOverlay.setButtonListener(new ButtonListener() {
-						@Override
-						public void onButton1Clicked() {
-							// Reset game
-							mOverlay.dismiss();
-							joystick.reset();
-							dialogOn = false;
-							scoreToBeat = WorstScore;
-						}
-
-						@Override
-						public void onButton2Clicked() {
-							// Return to game
-							mOverlay.dismiss();
-							dialogOn = false;
-						}
-
-						@Override
-						public void onButton3Clicked() {
-							// Share screenshot
-							mOverlay.dismiss();
-							progressDialog = ProgressDialog.show(MainActivity.this, "", "Starting Facebook", true);
-							ShareHelper.shareFacebook(MainActivity.this, uiHelper, progressDialog, cropped, score,
-									ShareHelper.getDeepLinkToShare(score));
-							dialogOn = false;
-						}
-
-						@Override
-						public void onAdClicked() {
-							// Start Hiq Lockscreen
-							mOverlay.dismiss();
-							startPlayStore(getString(R.string.play_store_link_hiq));
-							dialogOn = false;
-						}
-					});
-				}
+				showGameOverFull(score);
 			}
 
 			@Override
 			public void onUndoSelected(int undos) {
-				if (!dialogOn) {
-					dialogOn = true;
-					final OverlayFragment mOverlay = OverlayFragment.newInstance(ctx, OverlayType.Undo);
-					mOverlay.setCancelable(false);
-					mOverlay.setBackground(ctx, takeScreenShot());
-					mOverlay.show(getSupportFragmentManager(), "fragment_overlay");
-					mOverlay.setButtonListener(new ButtonListener() {
-						@Override
-						public void onButton1Clicked() {
-							// Share
-							mOverlay.dismiss();
-							progressDialog = ProgressDialog.show(MainActivity.this, "", "Starting Facebook", true);
-							ShareHelper.shareFacebook(MainActivity.this, uiHelper, progressDialog);
-							dialogOn = false;
-						}
+				final OverlayFragment mOverlay = OverlayFragment.newInstance(ctx, OverlayType.Undo);
+				mOverlay.setBackground(ctx, takeScreenShot());
+				mOverlay.show(getSupportFragmentManager(), "fragment_overlay");
+				mOverlay.setButtonListener(new ButtonListener() {
+					@Override
+					public void onButton1Clicked() {
+						// Share
+						mOverlay.dismiss();
+						progressDialog = ProgressDialog.show(MainActivity.this, "", "Starting Facebook", true);
+						ShareHelper.shareFacebook(MainActivity.this, uiHelper, progressDialog, joystick);
+					}
 
-						@Override
-						public void onButton2Clicked() {
-							// Not Now
-							mOverlay.dismiss();
-							dialogOn = false;
-						}
+					@Override
+					public void onButton2Clicked() {
+						// Not Now
+						mOverlay.dismiss();
+					}
 
-						@Override
-						public void onButton3Clicked() {
-							// Rate
-							mOverlay.dismiss();
-							startPlayStore(getString(R.string.play_store_link_3072));
-							dialogOn = false;
-						}
+					@Override
+					public void onButton3Clicked() {
+						// Rate
+						mOverlay.dismiss();
+						startPlayStore(getString(R.string.play_store_link_3072));
+					}
 
-						@Override
-						public void onAdClicked() {
-							// Start Hiq Lockscreen
-							mOverlay.dismiss();
-							startPlayStore(getString(R.string.play_store_link_hiq));
-							dialogOn = false;
-						}
-					});
-				}
+					@Override
+					public void onAdClicked() {
+						// Start Hiq Lockscreen
+						mOverlay.dismiss();
+						startPlayStore(getString(R.string.play_store_link_hiq));
+					}
+				});
 			}
 
 			@Override
 			public void onRestartSelected() {
-				if (!dialogOn) {
-					dialogOn = true;
-					final OverlayFragment mOverlay = OverlayFragment.newInstance(ctx, OverlayType.Restart, joystick.getCurrentScore());
-					mOverlay.setCancelable(false);
-					mOverlay.setBackground(ctx, takeScreenShot());
-					mOverlay.show(getSupportFragmentManager(), "fragment_overlay");
-					mOverlay.setButtonListener(new ButtonListener() {
-						@Override
-						public void onButton1Clicked() {
-							// Reset Game
-							mOverlay.dismiss();
-							joystick.reset();
-							dialogOn = false;
-							scoreToBeat = WorstScore;
-						}
+				final OverlayFragment mOverlay = OverlayFragment.newInstance(ctx, OverlayType.Restart, joystick.getCurrentScore());
+				mOverlay.setBackground(ctx, takeScreenShot());
+				mOverlay.show(getSupportFragmentManager(), "fragment_overlay");
+				mOverlay.setButtonListener(new ButtonListener() {
+					@Override
+					public void onButton1Clicked() {
+						// Reset Game
+						mOverlay.dismiss();
+						joystick.reset();
+						scoreToBeat = WorstScore;
+					}
 
-						@Override
-						public void onButton2Clicked() {
-							// Return to Game
-							mOverlay.dismiss();
-							dialogOn = false;
-						}
+					@Override
+					public void onButton2Clicked() {
+						// Return to Game
+						mOverlay.dismiss();
+					}
 
-						@Override
-						public void onButton3Clicked() {
-							// nothing
-						}
+					@Override
+					public void onButton3Clicked() {
+						// nothing
+					}
 
-						@Override
-						public void onAdClicked() {
-							// Start Hiq Lockscreen
-							mOverlay.dismiss();
-							startPlayStore(getString(R.string.play_store_link_hiq));
-							dialogOn = false;
-						}
-					});
-				}
+					@Override
+					public void onAdClicked() {
+						// Start Hiq Lockscreen
+						mOverlay.dismiss();
+						startPlayStore(getString(R.string.play_store_link_hiq));
+					}
+				});
 			}
 
 			@Override
@@ -245,46 +135,7 @@ public class MainActivity extends FragmentActivity {
 
 			@Override
 			public void onLeaderboardSelected() {
-				if (!dialogOn) {
-					dialogOn = true;
-					SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-					final EditTextFragment mOverlay = EditTextFragment.newInstance(ctx,
-							sharedPrefs.getString("user_name", MainActivity.this.getString(R.string.default_name)));
-					mOverlay.setCancelable(false);
-					mOverlay.setBackground(ctx, takeScreenShot());
-					mOverlay.show(getSupportFragmentManager(), "fragment_overlay");
-					mOverlay.setButtonListener(new ButtonListener() {
-						@Override
-						public void onButton1Clicked() {
-							// Change Name
-							SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-							sharedPrefs.edit().putString("user_name", mOverlay.getUserName()).commit();
-							joystick.setLeaderboardUserName(mOverlay.getUserName(), sharedPrefs.getBoolean("first_place", false));
-							mOverlay.dismiss();
-							dialogOn = false;
-						}
-
-						@Override
-						public void onButton2Clicked() {
-							// Return
-							mOverlay.dismiss();
-							dialogOn = false;
-						}
-
-						@Override
-						public void onButton3Clicked() {
-							// nothing
-						}
-
-						@Override
-						public void onAdClicked() {
-							// Start Hiq Lockscreen
-							mOverlay.dismiss();
-							startPlayStore(getString(R.string.play_store_link_hiq));
-							dialogOn = false;
-						}
-					});
-				}
+				showNameChange(false, 0);
 			}
 		});
 		joystick.setBest(best);
@@ -341,38 +192,33 @@ public class MainActivity extends FragmentActivity {
 					sharedPrefs.getString("user_name", MainActivity.this.getString(R.string.default_name)));
 
 		if (scoreToBeat > WorstScore) {
-			if (!dialogOn) {
-				dialogOn = true;
-				final OverlayFragment mOverlay = OverlayFragment.newInstance(ctx, OverlayType.Challenge, scoreToBeat);
-				mOverlay.setCancelable(false);
-				mOverlay.show(getSupportFragmentManager(), "fragment_overlay");
-				mOverlay.setButtonListener(new ButtonListener() {
-					@Override
-					public void onButton1Clicked() {
-						// Nothing
-					}
+			final OverlayFragment mOverlay = OverlayFragment.newInstance(ctx, OverlayType.Challenge, scoreToBeat);
+			mOverlay.setCancelable(false);
+			mOverlay.show(getSupportFragmentManager(), "fragment_overlay");
+			mOverlay.setButtonListener(new ButtonListener() {
+				@Override
+				public void onButton1Clicked() {
+					// Nothing
+				}
 
-					@Override
-					public void onButton2Clicked() {
-						// Nothing
-					}
+				@Override
+				public void onButton2Clicked() {
+					// Nothing
+				}
 
-					@Override
-					public void onButton3Clicked() {
-						// Start Game
-						mOverlay.dismiss();
-						dialogOn = false;
-					}
+				@Override
+				public void onButton3Clicked() {
+					// Start Game
+					mOverlay.dismiss();
+				}
 
-					@Override
-					public void onAdClicked() {
-						// Start Hiq Lockscreen
-						mOverlay.dismiss();
-						startPlayStore(getString(R.string.play_store_link_hiq));
-						dialogOn = false;
-					}
-				});
-			}
+				@Override
+				public void onAdClicked() {
+					// Start Hiq Lockscreen
+					mOverlay.dismiss();
+					startPlayStore(getString(R.string.play_store_link_hiq));
+				}
+			});
 		}
 	}
 
@@ -392,7 +238,6 @@ public class MainActivity extends FragmentActivity {
 					progressDialog.dismiss();
 					progressDialog = null;
 				}
-				Log.d("test", String.format("Error: %s", error.toString()));
 			}
 
 			@Override
@@ -403,12 +248,13 @@ public class MainActivity extends FragmentActivity {
 				}
 				boolean didFinishNormal = FacebookDialog.getNativeDialogDidComplete(data);
 				String completionGesture = FacebookDialog.getNativeDialogCompletionGesture(data);
-				String postID = FacebookDialog.getNativeDialogPostId(data);
+				// String postID = FacebookDialog.getNativeDialogPostId(data);
 				if (didFinishNormal && completionGesture.equals("post")) {
-					if (postID != null)
-						Log.d("test", "postID = " + postID);
 					SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
 					sharedPrefs.edit().putInt("max_undos", sharedPrefs.getInt("max_undos", defaultMaxUndos) + 1).commit();
+					if (joystick != null) {
+						joystick.setMaxUndos(sharedPrefs.getInt("max_undos", defaultMaxUndos));
+					}
 				}
 			}
 		});
@@ -453,41 +299,35 @@ public class MainActivity extends FragmentActivity {
 
 	@Override
 	public void onBackPressed() {
-		if (!dialogOn) {
-			dialogOn = true;
-			final OverlayFragment mOverlay = OverlayFragment.newInstance(ctx, OverlayType.ExitGame);
-			mOverlay.setBackground(this, takeScreenShot());
-			mOverlay.setCancelable(false);
-			mOverlay.show(getSupportFragmentManager(), "fragment_overlay");
-			mOverlay.setButtonListener(new ButtonListener() {
-				@Override
-				public void onButton1Clicked() {
-					// Exit
-					finish();
-					dialogOn = false;
-				}
+		final OverlayFragment mOverlay = OverlayFragment.newInstance(ctx, OverlayType.ExitGame);
+		mOverlay.setBackground(this, takeScreenShot());
+		mOverlay.setCancelable(false);
+		mOverlay.show(getSupportFragmentManager(), "fragment_overlay");
+		mOverlay.setButtonListener(new ButtonListener() {
+			@Override
+			public void onButton1Clicked() {
+				// Exit
+				finish();
+			}
 
-				@Override
-				public void onButton2Clicked() {
-					// Return
-					mOverlay.dismiss();
-					dialogOn = false;
-				}
+			@Override
+			public void onButton2Clicked() {
+				// Return
+				mOverlay.dismiss();
+			}
 
-				@Override
-				public void onButton3Clicked() {
-					// nothing
-				}
+			@Override
+			public void onButton3Clicked() {
+				// nothing
+			}
 
-				@Override
-				public void onAdClicked() {
-					// Start Hiq Lockscreen
-					mOverlay.dismiss();
-					startPlayStore(getString(R.string.play_store_link_hiq));
-					dialogOn = false;
-				}
-			});
-		}
+			@Override
+			public void onAdClicked() {
+				// Start Hiq Lockscreen
+				mOverlay.dismiss();
+				startPlayStore(getString(R.string.play_store_link_hiq));
+			}
+		});
 	}
 
 	@SuppressLint("NewApi")
@@ -499,6 +339,149 @@ public class MainActivity extends FragmentActivity {
 		Bitmap b = Bitmap.createBitmap(b1, 0, 0, b1.getWidth(), b1.getHeight());
 		view.destroyDrawingCache();
 		return b;
+	}
+
+	private void showNameChange(final boolean toGameOver, final int score) {
+		SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+		final EditTextFragment mOverlay = EditTextFragment.newInstance(ctx,
+				sharedPrefs.getString("user_name", MainActivity.this.getString(R.string.default_name)));
+		if (toGameOver)
+			mOverlay.setCancelable(false);
+		mOverlay.setBackground(ctx, takeScreenShot());
+		mOverlay.show(getSupportFragmentManager(), "fragment_overlay");
+		mOverlay.setButtonListener(new ButtonListener() {
+			@Override
+			public void onButton1Clicked() {
+				// Change Name
+				SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+				sharedPrefs.edit().putString("user_name", mOverlay.getUserName()).commit();
+				joystick.setLeaderboardUserName(mOverlay.getUserName(), sharedPrefs.getBoolean("first_place", false));
+				mOverlay.dismiss();
+				if (toGameOver)
+					showGameOverPartial(score);
+			}
+
+			@Override
+			public void onButton2Clicked() {
+				// Return
+				mOverlay.dismiss();
+				if (toGameOver)
+					showGameOverPartial(score);
+			}
+
+			@Override
+			public void onButton3Clicked() {
+				// nothing
+			}
+
+			@Override
+			public void onAdClicked() {
+				// Start Hiq Lockscreen
+				if (toGameOver) {
+					// do nothing
+				} else {
+					mOverlay.dismiss();
+					startPlayStore(getString(R.string.play_store_link_hiq));
+				}
+			}
+		});
+	}
+
+	private void showGameOverFull(final int score) {
+		SharedPreferences sharedPrefsFull = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+		if (sharedPrefsFull.getInt("score_best", 0) == 0) {
+			showNameChange(true, score);
+		} else {
+			showGameOverPartial(score);
+		}
+	}
+
+	private void showGameOverPartial(final int score) {
+		SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+		if (score > sharedPrefs.getInt("score_best", 0)) {
+			joystick.setBest(score);
+			SharedPreferences.Editor edit = sharedPrefs.edit();
+			edit.putInt("score_best", score).putBoolean("score_uploaded", false);
+			edit.commit();
+			new PostHighScore(MainActivity.this) {
+				@Override
+				protected void onPostExecute(Integer result) {
+					SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+					SharedPreferences.Editor editor = sharedPrefs.edit();
+					if (result == 0) {
+						editor.putString("global_score", getGlobalHighScore()).putString("global_name", getName())
+								.putBoolean("score_uploaded", true);
+						if (getPlace().equals(getString(R.string.leaderboard_default_place1st))) {
+							editor.putString("global_score2", getSecondPlaceScore()).putString("global_name2", getSecondPlaceName())
+									.putString("global_place2", getString(R.string.leaderboard_default_place2nd))
+									.putBoolean("first_place", true);
+							joystick.setLeaderboard(getName(), getGlobalHighScore(), getSecondPlaceName(), getSecondPlaceScore(),
+									getString(R.string.leaderboard_default_place2nd));
+						} else {
+							editor.putString("global_score2", String.valueOf(sharedPrefs.getInt("score_best", 0)))
+									.putString("global_name2",
+											sharedPrefs.getString("user_name", MainActivity.this.getString(R.string.default_name)))
+									.putString("global_place2", getPlace()).putBoolean("first_place", false);
+							joystick.setLeaderboard(getName(), getGlobalHighScore(),
+									sharedPrefs.getString("user_name", MainActivity.this.getString(R.string.default_name)),
+									String.valueOf(sharedPrefs.getInt("score_best", 0)), getPlace());
+						}
+					}
+					editor.commit();
+				}
+			}.execute(String.valueOf(score), "new", sharedPrefs.getString("user_name", MainActivity.this.getString(R.string.default_name)));
+		}
+		String subtitleHighlight = "";
+		OverlayType type = OverlayType.GameOver;
+		if (scoreToBeat <= WorstScore) {
+			subtitleHighlight = String.valueOf(score);
+			type = OverlayType.GameOver;
+		} else if (scoreToBeat > score) {
+			type = OverlayType.GameOverChallengeLost;
+			subtitleHighlight = scoreToBeat + "\n" + score;
+		} else if (score > scoreToBeat) {
+			type = OverlayType.GameOverChallengeWon;
+			subtitleHighlight = score + "\n" + scoreToBeat;
+		} else {
+			type = OverlayType.GameOverChallengeTie;
+			subtitleHighlight = String.valueOf(score);
+		}
+		final Bitmap cropped = cropScreen(takeScreenShot());
+		final OverlayFragment mOverlay = OverlayFragment.newInstance(ctx, type, subtitleHighlight);
+		mOverlay.setCancelable(false);
+		mOverlay.setBackground(ctx, takeScreenShot());
+		mOverlay.show(getSupportFragmentManager(), "fragment_overlay");
+		mOverlay.setButtonListener(new ButtonListener() {
+			@Override
+			public void onButton1Clicked() {
+				// Reset game
+				mOverlay.dismiss();
+				joystick.reset();
+				scoreToBeat = WorstScore;
+			}
+
+			@Override
+			public void onButton2Clicked() {
+				// Return to game
+				mOverlay.dismiss();
+			}
+
+			@Override
+			public void onButton3Clicked() {
+				// Share screenshot
+				mOverlay.dismiss();
+				progressDialog = ProgressDialog.show(MainActivity.this, "", "Starting Facebook", true);
+				ShareHelper.shareFacebook(MainActivity.this, uiHelper, progressDialog, joystick, cropped, score,
+						ShareHelper.getDeepLinkToShare(score));
+			}
+
+			@Override
+			public void onAdClicked() {
+				// Start Hiq Lockscreen
+				mOverlay.dismiss();
+				startPlayStore(getString(R.string.play_store_link_hiq));
+			}
+		});
 	}
 
 	private void startPlayStore(String url) {

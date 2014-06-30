@@ -1,18 +1,17 @@
 package com.olyware.game3072.utils;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpPut;
-import org.apache.http.client.params.ClientPNames;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
+import ch.boye.httpclientandroidlib.HttpEntity;
+import ch.boye.httpclientandroidlib.HttpResponse;
+import ch.boye.httpclientandroidlib.client.HttpClient;
+import ch.boye.httpclientandroidlib.client.methods.HttpPut;
+import ch.boye.httpclientandroidlib.entity.StringEntity;
+import ch.boye.httpclientandroidlib.impl.client.HttpClientBuilder;
+import ch.boye.httpclientandroidlib.util.EntityUtils;
 
 import com.olyware.game3072.R;
 
@@ -87,8 +86,8 @@ public class PostHighScore extends AsyncTask<String, Integer, Integer> {
 	@Override
 	protected Integer doInBackground(String... s) {
 		// POST to API with old and new registration, also referral's registration
-		DefaultHttpClient httpclient = new DefaultHttpClient();
-		httpclient.getParams().setParameter(ClientPNames.HANDLE_REDIRECTS, false);
+		HttpClient httpclient = HttpClientBuilder.create().build();
+		// httpclient.getParams().setParameter(ClientPNames.HANDLE_REDIRECTS, false);
 
 		HttpPut httpput = new HttpPut(BASE_URL);
 		HttpEntity entity;
@@ -112,13 +111,11 @@ public class PostHighScore extends AsyncTask<String, Integer, Integer> {
 				}
 			}
 			data.put(passwordKey, password);
-			Log.d("test", "JSON to score: " + data.toString());
 			httpput.setEntity(new StringEntity(data.toString()));
 			httpput.setHeader("Content-Type", "application/json");
 			HttpResponse response = httpclient.execute(httpput);
 			entity = response.getEntity();
 			fullResult = EntityUtils.toString(entity);
-			Log.d("test", fullResult);
 			jsonResponse = new JSONObject(fullResult);
 		} catch (JSONException j) {
 			j.printStackTrace();

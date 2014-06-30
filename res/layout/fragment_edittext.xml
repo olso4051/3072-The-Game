@@ -70,7 +70,7 @@
 			android:layout_height="wrap_content"
 			android:layout_weight="1"
 			android:gravity="left"
-			android:paddingRight="@dimen/activity_horizontal_margin"
+			android:paddingLeft="@dimen/overlay_horizontal_margin"
 			android:text="@string/fragment_edittext_button1" />
 		
 		<TextView
@@ -80,7 +80,7 @@
 			android:layout_height="wrap_content"
 			android:layout_weight="1"
 			android:gravity="right"
-			android:paddingLeft="@dimen/activity_horizontal_margin"
+			android:paddingRight="@dimen/overlay_horizontal_margin"
 			android:text="@string/fragment_edittext_button2" />
 		
 	</LinearLayout>

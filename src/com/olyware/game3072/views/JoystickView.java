@@ -20,7 +20,6 @@ import android.os.Handler;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
@@ -101,7 +100,6 @@ public class JoystickView extends View {
 			String v = value + "";
 			Rect b = new Rect();
 			textPaint.getTextBounds(v, 0, v.length(), b);
-			Log.d("test", "textSizePix[0] = " + textSizePix[0] + " |b.height() = " + b.height());
 			textHeight = b.height();
 			textWidth = b.width();
 
@@ -726,7 +724,10 @@ public class JoystickView extends View {
 	}
 
 	public void setMaxUndos(int max) {
+		if (max > maxUndos)
+			undos += max - maxUndos;
 		maxUndos = max;
+		invalidate();
 	}
 
 	public void setLeaderboard(String name1, String score1, String name2, String score2, String place2) {
@@ -811,8 +812,10 @@ public class JoystickView extends View {
 	protected void onDraw(Canvas canvas) {
 		// Drawing Restart, Undos(#)
 		canvas.drawText(Restart, PaddingLeft, triangles.get(0).getTextY(), leftTextPaintBig);
-		canvas.drawText(Undo + "(" + ((undos == 0 || states.size() <= 1) ? "?" : Math.min(undos, states.size() - 1)) + ")", Width
-				- PaddingRight, triangles.get(0).getTextY(), rightTextPaintBig);
+		/*canvas.drawText(Undo + "(" + ((undos == 0 || states.size() <= 1) ? "?" : Math.min(undos, states.size() - 1)) + ")", Width
+				- PaddingRight, triangles.get(0).getTextY(), rightTextPaintBig);*/
+		canvas.drawText(Undo + "(" + ((undos == 0) ? "?" : undos) + ")", Width - PaddingRight, triangles.get(0).getTextY(),
+				rightTextPaintBig);
 
 		// Drawing Game Board
 		canvas.drawPath(triangleBigPath, triangleBigPaintRounded);
@@ -934,9 +937,9 @@ public class JoystickView extends View {
 				if (startX < (Width - w) / 2 - padding) {
 					listener.onRestartSelected();
 				} else if (startX > (Width + w) / 2 + padding) {
-					if (undos == 0 || states.size() <= 1) {
+					if (undos == 0) {
 						listener.onUndoSelected(0);
-					} else {
+					} else if (undos > 0 && states.size() > 1) {
 						undoSlide();
 					}
 				}
@@ -1087,7 +1090,7 @@ public class JoystickView extends View {
 				else
 					value = 3;
 				triangles.get(openTriangles.get(rand.nextInt(openTriangles.size()))).setValue(value, !first, SetPrevious.DONT_SET);
-				if (states.size() >= undos + 1 && states.size() >= 1) {
+				if (states.size() >= undos + 2 && states.size() >= 1) {
 					states.remove(states.size() - 1);
 					states.add(0, getState());
 				} else {
@@ -1217,7 +1220,6 @@ public class JoystickView extends View {
 			float ratio = x / y;
 			textSizePix[i] = (int) ((((2 - 4 * trianglePaddingPercent) * h - w / sqrt3) / (2 + sqrt3 * ratio))
 					/ (1 - 2 * percent / (2 + sqrt3 * ratio)) * pixToFontSize);
-			Log.d("test", "textSizePix[" + i + "] = " + textSizePix[i]);
 			textPaint[i].setTextSize(textSizePix[i]);
 		}
 
